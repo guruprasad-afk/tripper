@@ -1,9 +1,9 @@
 // Imports
 import React from 'react';
 import ReactDOM from 'react-dom';
+import LogBox from './components/login/LogBox';
 
 import './stylesheets/index.css';
-import { App } from './components/App';
 
 
-ReactDOM.render(<App/>,document.getElementById('root'));
+ReactDOM.render(<LogBox/>,document.getElementById('root'));
