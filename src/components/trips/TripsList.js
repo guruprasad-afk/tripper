@@ -4,11 +4,11 @@ import { Trip } from './Trip';
 
 export const TripsList = ({match, days}) => { 
     const filter = match.params.filter;
-    const trips = filter ? days.filter( trip => trip.type === filter) : days;
+    const trips = filter ? days.filter( trip => trip.category === filter) : days;
     return (
         <div className="trips-list">
             <h3>{filter ? filter : 'All'} Trips</h3>            
-            <table class="table">
+            <table className="table">
                 <thead>
                     <tr>
                         <th>Date</th>

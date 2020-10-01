@@ -1,15 +1,15 @@
 import React from 'react';
 
-export const Trip = ({date, place, type}) => (
+export const Trip = ({tripDate, place, category}) => (
     <tr>
         <td>
-            {date}
+            {new Date(tripDate).toDateString()}
         </td>
         <td>
             {place}
         </td>
         <td>
-            {type}
+            {category}
         </td>
     </tr>	
 )

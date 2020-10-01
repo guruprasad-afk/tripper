@@ -5,9 +5,9 @@ export const AddTrip = ({newTrip}) => {
     const submit = (e) => {
         e.preventDefault();
         newTrip({
-            date : date.value,
+            tripDate : date.value,
             place : place.value,
-            type : type.value,
+            category : type.value,
         });
         date.value = place.value = type.value = '';
     }

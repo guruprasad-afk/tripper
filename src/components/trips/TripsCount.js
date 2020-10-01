@@ -13,7 +13,7 @@ const getProgressBarWidth = (width) => {
     return {width};
 }
 
-export const TripsCount = ({total, tropic, trek, club, goal=15}) => (
+export const TripsCount = ({total, tropic, trek, club, goal=4}) => (
     <div className="trips-count">
         <div className="content">
             <div className="total"><h1>{total}</h1>trips</div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import axios from 'axios'
 
 // Components
 import { Nav } from './Nav';
@@ -10,30 +11,25 @@ import { Error404 } from './Error404';
 
 export class App extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
-            allTrips: [
-                {
-                    place: "Manali",
-                    date: "2017-01-01",
-                    type: "Trek"
-                },
-                {
-                    place: "Mumbai",
-                    date: "2017-04-05",
-                    type: "Club"
-                },
-                {
-                    place: "Marina",
-                    date: "2017-02-09",
-                    type: "Tropic"
-                }
-            ]
+            allTrips: []
         }
         this.addTrip = this.addTrip.bind(this);
     }
 
+    componentDidMount() {
+        axios.get('http://localhost:8080/api/trips').then(res => {
+            this.setState({
+                allTrips: res.data.trips
+            })
+        })
+    }
+
     addTrip(newTrip) {
+       axios.post('http://localhost:8080/api/trips', {
+        ...newTrip
+    }).then(res => {
         this.setState((prevState) => {
             return {
                 allTrips: [
@@ -42,11 +38,12 @@ export class App extends React.Component {
                 ]
             }
         });
+    })
     }
 
     countDays(filter) {
         const { allTrips } = this.state;
-        return allTrips.filter(trip => filter ? trip.type === filter : trip).length;
+        return allTrips.filter(trip => filter ? trip.category === filter : trip).length;
     }
 
     // Switch goes to first matching route
